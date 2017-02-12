@@ -1,0 +1,52 @@
+{
+  "name": "web-boilerplate",
+  "version": "1.0.0",
+  "description": "Simple boilerplate using webpack2",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node dev-server.js",
+    "build": "SET NODE_ENV=development& webpack",
+    "build-watch": "SET NODE_ENV=development& webpack -d -w",
+    "prod": "SET NODE_ENV=production& webpack -p",
+    "test": "mocha **/*.test.js",
+    "text-watch": "nodemon --exec yarn test"
+  },
+  "repository": {},
+  "author": "Pedro La Rosa",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.22.1",
+    "babel-loader": "^6.2.10",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.9.0",
+    "file-loader": "^0.10.0",
+    "html-loader": "^0.4.4",
+    "mocha": "^3.2.0",
+    "node-sass": "^4.5.0",
+    "postcss-loader": "^1.2.2",
+    "resolve-url-loader": "^1.6.1",
+    "sass-loader": "^5.0.1",
+    "script-loader": "^0.7.0",
+    "sinon": "^1.17.7",
+    "sinon-chai": "^2.8.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "dependencies": {
+    "express": "^4.14.1",
+    "font-awesome": "^4.7.0",
+    "handlebars": "^4.0.6",
+    "jquery": "^3.1.1"
+  }
+}
