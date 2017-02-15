@@ -36,6 +36,10 @@ module.exports = {
       {
         test: /.scss$/,
         loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+      }, // end scss loader
+      { 
+        test: /\.hbs$/, 
+        loader: "handlebars-loader" ,
       },
     ], // end rules Array
   }, // end module Object

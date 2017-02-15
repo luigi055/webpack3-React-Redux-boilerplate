@@ -10,7 +10,7 @@
     "build-watch": "SET NODE_ENV=development& webpack -d -w",
     "prod": "SET NODE_ENV=production& webpack -p",
     "test": "mocha **/*.test.js",
-    "text-watch": "nodemon --exec yarn test"
+    "text-watch": "nodemon --exec \"yarn test\""
   },
   "repository": {},
   "author": "Pedro La Rosa",
@@ -29,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.9.0",
     "file-loader": "^0.10.0",
+    "handlebars-loader": "^1.4.0",
     "html-loader": "^0.4.4",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
