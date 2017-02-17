@@ -7,7 +7,7 @@ module.exports = {
     './src/app.js',
   ],
   output: {
-    path: './public/dist',
+    path: './public',
     filename: 'bundle.js',
   },
   module: {
@@ -27,10 +27,11 @@ module.exports = {
       }, // end .jsx? rule
       {
         test: /\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]',
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]',
       }, // end otf, woff and woff2 test
-      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?limit=10000&name=fonts/[name].[ext]',
+      {
+        test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file-loader?limit=10000&name=assets/fonts/[name].[ext]',
       }, // end ttf , eot and svg test
       {
         test: /.scss$/,
@@ -39,6 +40,24 @@ module.exports = {
       {
         test: /\.hbs$/,
         loader: 'handlebars-loader',
+      },
+      {
+        test: /.*\.(gif|png|jpe?g)$/i,
+        loaders: [
+          'file-loader?limit=1024&name=assets/images/[name].[ext]',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4,
+              },
+            },
+          },
+        ],
       },
     ], // end rules Array
   }, // end module Object
