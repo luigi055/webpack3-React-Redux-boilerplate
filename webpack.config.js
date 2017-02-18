@@ -20,7 +20,7 @@ module.exports = {
           options: {
             presets: [
               ['latest', { modules: false }],
-              ['stage-1', { modules: false }],
+              ['stage-0', { modules: false }],
             ],
           },
         }], // end use

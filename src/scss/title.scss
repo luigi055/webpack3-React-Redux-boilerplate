@@ -1,5 +1,7 @@
-*, *::after, *::before {
-    margin: 0;
+*,
+*::after,
+*::before {
+  margin: 0;
   border: 0;
   padding: 0;
   box-sizing: border-box;
@@ -8,4 +10,8 @@
 .title {
   color: green;
   background: purple;
+}
+
+.test {
+  font-size: 3px;
 }
