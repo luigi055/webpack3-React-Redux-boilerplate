@@ -1,13 +1,15 @@
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  context: path.resolve(__dirname, 'src'),
   entry: [
     // 'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
-    './src/app.js',
+    './app.js',
   ],
   output: {
-    path: './public',
+    path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
   },
   module: {
@@ -35,7 +37,15 @@ module.exports = {
       }, // end ttf , eot and svg test
       {
         test: /.scss$/,
-        loader: 'style-loader!css-loader!postcss-loader!sass-loader',
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader',
+          ],
+        }),
+        // loader: 'style-loader!css-loader!postcss-loader!sass-loader',
       }, // end scss loader
       {
         test: /\.hbs$/,
@@ -61,4 +71,14 @@ module.exports = {
       },
     ], // end rules Array
   }, // end module Object
+  plugins: [
+    new ExtractTextPlugin('style.css'),
+  ],
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    compress: true,
+    port: 3000,
+    clientLogLevel: 'none',
+    historyApiFallback: true,
+  },
 };
