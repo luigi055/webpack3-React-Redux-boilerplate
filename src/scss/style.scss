@@ -1,0 +1,11 @@
+// Importing project's base variables
+@import "base/variables";
+
+// Foundation sites 
+@import "foundation/settings";
+@import "foundation/foundation";
+
+@include foundation-everything;
+
+// Components
+@import "components/title.scss";

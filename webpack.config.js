@@ -6,6 +6,7 @@ module.exports = {
   entry: [
     // 'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
+    'script-loader!foundation-sites/dist/js/foundation.min.js',
     './app.js',
   ],
   output: {
@@ -40,9 +41,16 @@ module.exports = {
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: [
-            'css-loader',
-            'postcss-loader',
-            'sass-loader',
+            {
+              loader: 'css-loader',
+            }, {
+              loader: 'postcss-loader',
+            }, {
+              loader: 'sass-loader',
+              options: {
+                includePaths: path.resolve(__dirname, './node_modules/foundation-sites/scss'),
+              },
+            },
           ],
         }),
         // loader: 'style-loader!css-loader!postcss-loader!sass-loader',
@@ -81,4 +89,5 @@ module.exports = {
     clientLogLevel: 'none',
     historyApiFallback: true,
   },
+  devtool: 'cheap-module-eval-source-map',
 };

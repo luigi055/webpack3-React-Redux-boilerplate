@@ -1,5 +1,5 @@
 import 'font-awesome/scss/font-awesome.scss';
-import './scss/title.scss';
+import './scss/style.scss';
 
 var saitama = require('./img/image-saitama.jpg');
 
