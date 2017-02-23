@@ -60,22 +60,27 @@ module.exports = {
         loader: 'handlebars-loader',
       },
       {
-        test: /.*\.(gif|png|jpe?g)$/i,
-        loaders: [
-          'file-loader?limit=1024&name=assets/images/[name].[ext]',
-          {
-            loader: 'image-webpack-loader',
-            query: {
+        test: /\.(jpe?g|png|gif)$/i,
+        loaders: ['file-loader?limit=1024&name=assets/images/[name].[ext]', {
+          loader: 'image-webpack-loader',
+          query: {
+            mozjpeg: {
               progressive: true,
-              optimizationLevel: 7,
+            },
+            gifsicle: {
               interlaced: false,
-              pngquant: {
-                quality: '65-90',
-                speed: 4,
-              },
+            },
+            optipng: {
+              optimizationLevel: 4,
+            },
+            pngquant: {
+              quality: '65-90',
+              speed: 4,
             },
           },
-        ],
+        }],
+        exclude: /node_modules/,
+        include: __dirname,
       },
     ], // end rules Array
   }, // end module Object
