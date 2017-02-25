@@ -64,7 +64,7 @@ module.exports = {
         test: /\.(jpe?g|png|gif)$/i,
         loaders: ['file-loader?limit=1024&name=assets/images/[name].[ext]', {
           loader: 'image-webpack-loader',
-          query: {
+          options: {
             mozjpeg: {
               progressive: true,
             },
