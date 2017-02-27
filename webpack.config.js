@@ -46,15 +46,19 @@ module.exports = {
             }, {
               loader: 'postcss-loader',
             }, {
+              loader: 'resolve-url-loader',
+            }, {
               loader: 'sass-loader',
               options: {
-                includePaths: [path.resolve(__dirname, './node_modules/foundation-sites/scss')],
+                includePaths: [
+                  path.resolve(__dirname, './node_modules/font-awesome/scss'),
+                  path.resolve(__dirname, './node_modules/foundation-sites/scss'),
+                ],
                 sourceMap: true,
               },
             },
           ],
         }),
-        // loader: 'style-loader!css-loader!postcss-loader!sass-loader',
       }, // end scss loader
       {
         test: /\.hbs$/,

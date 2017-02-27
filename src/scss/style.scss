@@ -1,6 +1,9 @@
 // Importing project's base variables
 @import "base/variables";
 
+// Fontawesome fonts
+@import "font-awesome/font-awesome";
+
 // Foundation sites 
 @import "foundation/settings";
 @import "foundation/foundation";
@@ -8,4 +11,4 @@
 @include foundation-everything;
 
 // Components
-@import "components/title.scss";
+@import "components/title";
