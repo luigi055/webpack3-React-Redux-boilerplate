@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -7,23 +8,39 @@ module.exports = {
     // 'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
     'script-loader!foundation-sites/dist/js/foundation.min.js',
-    './app.js',
+    './app.jsx',
   ],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
   },
+  resolve: {
+    modules: [
+      'node_modules',
+      path.resolve(__dirname, 'src/components'),
+      path.resolve(__dirname, 'src/containers'),
+      path.resolve(__dirname, 'src/reducers'),
+      path.resolve(__dirname, 'src/tests'),
+    ],
+    alias: {
+      routes: path.resolve(__dirname, 'src/routes/routes.jsx'),
+      actions: path.resolve(__dirname, 'src/actions/actions.js'),
+      configureStore: path.resolve(__dirname, 'src/store/configureStore.js'),
+    },
+    extensions: ['.js', '.jsx'],
+  },
   module: {
     rules: [
       {
-        test: '/.jsx?$/',
+        test: /.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: [{
-          loader: 'babel',
+          loader: 'babel-loader',
           options: {
             presets: [
               ['latest', { modules: false }],
-              ['stage-0', { modules: false }],
+              'stage-0',
+              'react',
             ],
           },
         }], // end use
@@ -61,10 +78,6 @@ module.exports = {
         }),
       }, // end scss loader
       {
-        test: /\.hbs$/,
-        loader: 'handlebars-loader',
-      },
-      {
         test: /\.(jpe?g|png|gif)$/i,
         loaders: ['file-loader?limit=1024&name=assets/images/[name].[ext]', {
           loader: 'image-webpack-loader',
@@ -91,6 +104,10 @@ module.exports = {
   }, // end module Object
   plugins: [
     new ExtractTextPlugin('style.css'),
+    new HTMLWebpackPlugin({
+      title: 'New Project',
+      template: 'index.html',
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'public'),
@@ -98,6 +115,7 @@ module.exports = {
     port: 3000,
     clientLogLevel: 'none',
     historyApiFallback: true,
+    open: true,
   },
   devtool: 'cheap-module-eval-source-map',
 };
