@@ -100,6 +100,10 @@ module.exports = {
         exclude: /node_modules/,
         include: __dirname,
       },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
     ], // end rules Array
   }, // end module Object
   plugins: [
