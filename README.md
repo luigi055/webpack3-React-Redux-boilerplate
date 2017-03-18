@@ -5,7 +5,8 @@
 * [Features](#user-content-features)
 * [Setup](#user-content-setup)
 * [Running in dev mode](#user-content-running-in-dev-mode)
-* [Generate Build](#user-content-running-in-dev-mode)
+* [Generate Build on Development](#user-content-build-on-development)
+* [Generate Build on Production](#user-content-build-on-production)
 * [Test](#user-content-running-in-dev-mode)
 
 
@@ -25,7 +26,7 @@ React/Redux advanced boilerplate for complete Front End web development .
 - [x] Redux Thunk and Redux Promise
 - [x] Redux Dev Tools
 - [x] Immutable reducer data
-- [x] Webpack 2 (development)
+- [x] Webpack 2 (development & production config)
 - [x] Babel - static props, decorators
 - [x] SASS with autoprefixing and Post-CSS Plugins css-mqpacker, pixrem, will-change
 - [x] Include Fontawesome and bootstrap v4 or foundation-sites v6 SASS files
@@ -38,8 +39,6 @@ React/Redux advanced boilerplate for complete Front End web development .
 
 ## Next TODO
 
-- [ ] Configure for Production
-- [ ] Webpack 2 ( production config )
 - [ ] Hot Module Replacement
 - [ ] Webpack dashboard
 - [ ] Also support for Karma for test with mocha / chai / sinon
@@ -64,7 +63,12 @@ $ yarn start
 $ yarn dev
 ```
 
-## Generate Build
+## Generate Build on Development
+
+```
+$ yarn build-dev
+```
+## Generate Build on Production
 
 ```
 $ yarn build

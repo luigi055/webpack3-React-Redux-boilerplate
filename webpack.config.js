@@ -1,6 +1,9 @@
 const path = require('path');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -38,7 +41,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: [
-              ['latest', { modules: false }],
+              ['env', { modules: false }],
               'stage-0',
               'react',
             ],
@@ -112,6 +115,17 @@ module.exports = {
       title: 'New Project',
       template: 'index.html',
     }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false,
+      },
+      sourceMap: false,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+      },
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, 'public'),
@@ -121,5 +135,6 @@ module.exports = {
     historyApiFallback: true,
     open: true,
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: process.env.NODE_ENV === 'production' ? undefined : 'cheap-module-eval-source-map',
 };
+console.log(`!----YOU ARE IN ${process.env.NODE_ENV.toUpperCase()}----!`);
