@@ -9,7 +9,7 @@ const About = props => {
       <p>{greet} This is a Full React app workflow used in Level Up Techs </p>
     </div>
   );
-}
+};
 
 const mapStateToProps = state => ({ greet: state.greet });
 

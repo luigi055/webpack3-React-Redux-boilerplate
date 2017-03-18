@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, hashHistory } from 'react-router';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-
-import routes from 'routes';
-import { configure } from 'configureStore';
-const store = configure();
-
 import './scss/style.scss';
+
+import Routes from './routes/Routes';
+import { configure } from './store/configureStore';
+
+const store = configure();
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={hashHistory} routes={routes} />
+    <Router>
+      <Routes />
+    </Router>
   </Provider>,
-  document.getElementById('app')
+  document.getElementById('app'),
 );

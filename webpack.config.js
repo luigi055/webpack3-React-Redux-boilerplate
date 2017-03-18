@@ -8,7 +8,7 @@ module.exports = {
     // 'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
     'script-loader!foundation-sites/dist/js/foundation.min.js',
-    './app.jsx',
+    './App.jsx',
   ],
   output: {
     path: path.resolve(__dirname, 'public'),
