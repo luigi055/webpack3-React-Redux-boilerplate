@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "SET NODE_ENV=production& node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
+    "dev": "webpack-dashboard -- node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prod": "SET NODE_ENV=production& webpack-dashboard -- node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
     "build-dev": "webpack",
     "build-dev--watch": "webpack -d -w",
     "build": "SET NODE_ENV=production& webpack -p",
@@ -61,11 +61,12 @@
     "script-loader": "^0.7.0",
     "sinon": "^2.0.0",
     "sinon-chai": "^2.8.0",
-    "style-loader": "^0.14.1",
+    "style-loader": "0.16.0",
     "stylelint": "^7.9.0",
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.1",
+    "webpack-dashboard": "^0.3.0",
     "webpack-dev-server": "^2.4.1"
   },
   "dependencies": {
@@ -73,7 +74,7 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "foundation-sites": "^6.3.0",
-    "jquery": "3.2.0",
+    "jquery": "3.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
