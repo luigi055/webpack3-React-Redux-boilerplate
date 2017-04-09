@@ -9,18 +9,18 @@ import { createStore } from 'redux';
 import chaiJquery from 'chai-jquery';
 import reducers from '../reducers/reducers';
 
-global.document = jsdom.jsdom('<!DOCTYPE html><html><body></body></html>');  
+global.document = jsdom.jsdom('<!DOCTYPE html><html><body></body></html>');
 global.window = global.document.defaultView;
 
 
 const $ = jquery(global.window);
 
-function renderComponent(ComponentClass, props, state) { 
+function renderComponent(ComponentClass, props, state) {
   const componentInstance = TestUtils.renderIntoDocument(
     <Provider store={createStore(reducers, state)}>
       <ComponentClass {...props} />
-    </Provider>
-    );
+    </Provider>,
+  );
 
   return $(ReactDOM.findDOMNode(componentInstance));
 }

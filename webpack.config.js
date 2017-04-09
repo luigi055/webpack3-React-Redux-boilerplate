@@ -9,7 +9,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   entry: [
-    // 'babel-polyfill',
+    'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
     'script-loader!foundation-sites/dist/js/foundation.min.js',
     './App.jsx',
