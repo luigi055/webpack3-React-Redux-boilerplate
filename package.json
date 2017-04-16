@@ -6,10 +6,10 @@
   "scripts": {
     "start": "node server.js",
     "dev": "webpack-dashboard -- node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
-    "prod": "export NODE_ENV=production || SET NODE_ENV=production& webpack-dashboard -- node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
+    "prod": "export NODE_ENV=production || SET \"NODE_ENV=production\" && webpack-dashboard -- node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
     "build-dev": "rm -rf ./public && webpack",
     "build-dev--watch": "webpack -d -w",
-    "build": "export NODE_ENV=production || SET NODE_ENV=production& rm -rf ./public && webpack -p",
+    "build": "export NODE_ENV=production || SET \"NODE_ENV=production\" && rm -rf ./public && webpack -p",
     "test": "mocha --compilers js:babel-core/register --require ./src/tests/testHelpers.js --recursive ./src/tests",
     "test-watch": "yarn run test -- --watch",
     "clear": "rm -rf ./public"
