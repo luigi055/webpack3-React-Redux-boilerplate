@@ -1,7 +1,7 @@
-node_modules/
-public/bundle.js/
-public/style.css/
-public/assets/
-public/dist/
-yarn-error.log/
-npm-debug.log/
+node_modules
+public/bundle.js
+public/style.css
+public/assets
+public/dist
+yarn-error.log
+npm-debug.log
