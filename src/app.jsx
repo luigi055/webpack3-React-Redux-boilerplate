@@ -1,11 +1,12 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import './scss/style.scss';
+//@flow
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import "./scss/style.scss";
 
-import Routes from './routes/Routes';
-import { configure } from './store/configureStore';
+import Routes from "./routes/routes";
+import { configure } from "./store/configureStore";
 
 const store = configure();
 
@@ -15,5 +16,5 @@ ReactDOM.render(
       <Routes />
     </Router>
   </Provider>,
-  document.getElementById('app'),
+  document.getElementById("app")
 );

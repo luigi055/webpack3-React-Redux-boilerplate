@@ -1,5 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
+//@flow
+import React from "react";
+import { connect } from "react-redux";
 
 const About = props => {
   const { greet } = props;

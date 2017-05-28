@@ -1,10 +1,11 @@
-import { combineReducers } from 'redux';
+//@flow
+import { combineReducers } from "redux";
 
 const reducers = combineReducers({
-  greet: greetReducer,
+  greet: greetReducer
 });
 
-function greetReducer(state = '', action) {
-  return 'Hello, There!';
+function greetReducer(state = "", action) {
+  return "Hello, There!";
 }
 export default reducers;

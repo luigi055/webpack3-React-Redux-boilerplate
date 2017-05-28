@@ -1,8 +1,12 @@
 {
   "extends": "airbnb",
   "plugins": [
-    "import"
+    "react",
+    "jsx-a11y",
+    "import",
+    "flow"
   ],
+  "retainLines": true,
   "env": {
     "browser": true,
     "node": true,
