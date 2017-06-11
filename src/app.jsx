@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import "./scss/style.scss";
 
 import Routes from "./routes/routes";
-import { configure } from "./store/configureStore";
+import { configure } from "./redux/store/configureStore";
 
 const store = configure();
 
