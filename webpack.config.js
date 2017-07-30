@@ -37,18 +37,19 @@ module.exports = {
     extensions: [".js", ".jsx"]
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        use: [
-          {
-            loader: "babel-loader",
-            options: {
-              presets: [["env", { modules: false }], "stage-0", "react"]
-            }
+        use: [{
+          loader: "babel-loader",
+          options: {
+            presets: [
+              ["env", {
+                modules: false
+              }], "stage-0", "react"
+            ]
           }
-        ] // end use
+        }] // end use
       }, // end .jsx? rule
       {
         test: /\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -62,18 +63,23 @@ module.exports = {
         test: /.scss$/,
         loader: ExtractTextPlugin.extract({
           fallback: "style-loader",
-          use: [
-            {
+          use: [{
               loader: "css-loader",
-              options: { sourceMap: true }
+              options: {
+                sourceMap: true
+              }
             },
             {
               loader: "postcss-loader",
-              options: { sourceMap: true }
+              options: {
+                sourceMap: true
+              }
             },
             {
               loader: "resolve-url-loader",
-              options: { sourceMap: true }
+              options: {
+                sourceMap: true
+              }
             },
             {
               loader: "sass-loader",
@@ -148,10 +154,10 @@ module.exports = {
     port: 3000,
     clientLogLevel: "none",
     historyApiFallback: true,
-    open: true
+    open: true,
+    openPage: '', // Avoid /undefined bug
   },
-  devtool: process.env.NODE_ENV === "production"
-    ? undefined
-    : "cheap-module-eval-source-map"
+  devtool: process.env.NODE_ENV === "production" ?
+    undefined : "cheap-module-eval-source-map"
 };
 console.log(`!----YOU ARE IN ${process.env.NODE_ENV.toUpperCase()}----!`);
