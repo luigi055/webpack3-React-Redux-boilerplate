@@ -2,7 +2,6 @@ const path = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
-const WebpackDashboard = require("webpack-dashboard/plugin");
 
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 
@@ -11,7 +10,8 @@ module.exports = {
   entry: [
     "babel-polyfill",
     "script-loader!jquery/dist/jquery.min.js",
-    "script-loader!foundation-sites/dist/js/foundation.min.js",
+    'script-loader!popper.js/dist/umd/popper.min.js',
+    'script-loader!bootstrap/dist/js/bootstrap.min.js',
     "./App.jsx"
   ],
   output: {
@@ -86,10 +86,7 @@ module.exports = {
               options: {
                 includePaths: [
                   path.resolve(__dirname, "./node_modules/font-awesome/scss"),
-                  path.resolve(
-                    __dirname,
-                    "./node_modules/foundation-sites/scss"
-                  )
+                  path.resolve(__dirname, './node_modules/bootstrap/scss'),
                 ],
                 sourceMap: true
               }
@@ -146,7 +143,6 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new WebpackDashboard()
   ],
   devServer: {
     contentBase: path.join(__dirname, "public"),

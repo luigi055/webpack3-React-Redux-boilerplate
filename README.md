@@ -1,4 +1,4 @@
-# Webpack2 React Redux boilerplate
+# Webpack3 React Redux boilerplate
 
 ## Table of contents
 * [About](#user-content-what-is-this)
@@ -40,7 +40,6 @@ React/Redux advanced boilerplate for complete Front End web development .
 ## Next TODO
 
 - [ ] Hot Module Replacement
-- [ ] Webpack dashboard
 - [ ] Also support for Karma for test with mocha / chai / sinon
 
 

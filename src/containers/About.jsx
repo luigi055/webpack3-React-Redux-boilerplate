@@ -6,7 +6,7 @@ const About = props => {
   const { greet } = props;
   return (
     <div className="about">
-      <h1>React Redux Webpack 2 Boilerplate</h1>
+      <h1 className="title-component">React Redux Webpack 3 Boilerplate</h1>
       <p>{greet} This is a Full React app workflow used in Level Up Techs </p>
     </div>
   );
