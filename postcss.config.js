@@ -8,7 +8,7 @@ module.exports = {
   plugins: [
     willChange,
     autoprefixer({
-      browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3'],
+      browsers: ['last 2 versions', 'ie >= 10', 'and_chr >= 2.3'],
     }),
     vmin,
     pixrem,

@@ -1,159 +1,169 @@
-const path = require("path");
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
+const path = require ('path');
+const webpack = require ('webpack');
+const ExtractTextPlugin = require ('extract-text-webpack-plugin');
+const HTMLWebpackPlugin = require ('html-webpack-plugin');
 
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
-  context: path.resolve(__dirname, "src"),
+  context: path.resolve (__dirname, 'src'),
   entry: [
-    "babel-polyfill",
-    "script-loader!jquery/dist/jquery.min.js",
+    'babel-polyfill',
+    'script-loader!jquery/dist/jquery.min.js',
     'script-loader!popper.js/dist/umd/popper.min.js',
     'script-loader!bootstrap/dist/js/bootstrap.min.js',
-    "./App.jsx"
+    './App.jsx',
   ],
   output: {
-    path: path.resolve(__dirname, "public"),
-    filename: "bundle.js"
+    path: path.resolve (__dirname, 'public'),
+    filename: 'bundle.js',
   },
   resolve: {
     modules: [
-      "node_modules",
-      path.resolve(__dirname, "src/components"),
-      path.resolve(__dirname, "src/containers"),
-      path.resolve(__dirname, "src/redux/reducers"),
-      path.resolve(__dirname, "src/tests")
+      'node_modules',
+      path.resolve (__dirname, 'src/components'),
+      path.resolve (__dirname, 'src/containers'),
+      path.resolve (__dirname, 'src/redux/reducers'),
+      path.resolve (__dirname, 'src/tests'),
     ],
     alias: {
-      routes: path.resolve(__dirname, "src/routes/routes.jsx"),
-      actions: path.resolve(__dirname, "src/redux/actions/actions.js"),
-      configureStore: path.resolve(
+      routes: path.resolve (__dirname, 'src/routes/routes.jsx'),
+      actions: path.resolve (__dirname, 'src/redux/actions/actions.js'),
+      configureStore: path.resolve (
         __dirname,
-        "src/redux/store/configureStore.js"
-      )
+        'src/redux/store/configureStore.js'
+      ),
     },
-    extensions: [".js", ".jsx"]
+    extensions: ['.js', '.jsx'],
   },
   module: {
-    rules: [{
+    rules: [
+      {
         test: /.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        use: [{
-          loader: "babel-loader",
-          options: {
-            presets: [
-              ["env", {
-                modules: false
-              }], "stage-0", "react"
-            ]
-          }
-        }] // end use
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  'env',
+                  {
+                    modules: false,
+                  },
+                ],
+                'stage-0',
+                'react',
+              ],
+            },
+          },
+        ], // end use
       }, // end .jsx? rule
       {
         test: /\.otf|woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]"
+        loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]',
       }, // end otf, woff and woff2 test
       {
         test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: "file-loader?limit=10000&name=assets/fonts/[name].[ext]"
+        loader: 'file-loader?limit=10000&name=assets/fonts/[name].[ext]',
       }, // end ttf , eot and svg test
       {
         test: /.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [{
-              loader: "css-loader",
+        loader: ExtractTextPlugin.extract ({
+          fallback: 'style-loader',
+          use: [
+            {
+              loader: 'css-loader',
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
-              loader: "resolve-url-loader",
+              loader: 'resolve-url-loader',
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
-              loader: "sass-loader",
+              loader: 'sass-loader',
               options: {
                 includePaths: [
-                  path.resolve(__dirname, "./node_modules/font-awesome/scss"),
-                  path.resolve(__dirname, './node_modules/bootstrap/scss'),
+                  path.resolve (__dirname, './node_modules/font-awesome/scss'),
+                  path.resolve (__dirname, './node_modules/bootstrap/scss'),
                 ],
-                sourceMap: true
-              }
-            }
-          ]
-        })
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
       }, // end scss loader
       {
         test: /\.(jpe?g|png|gif)$/i,
         loaders: [
-          "file-loader?limit=1024&name=assets/images/[name].[ext]",
+          'file-loader?limit=1024&name=assets/images/[name].[ext]',
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
-                progressive: true
+                progressive: true,
               },
               gifsicle: {
-                interlaced: false
+                interlaced: false,
               },
               optipng: {
-                optimizationLevel: 4
+                optimizationLevel: 4,
               },
               pngquant: {
-                quality: "65-90",
-                speed: 4
-              }
-            }
-          }
+                quality: '65-90',
+                speed: 4,
+              },
+            },
+          },
         ],
         exclude: /node_modules/,
-        include: __dirname
+        include: __dirname,
       },
       {
         test: /\.html$/,
-        loader: "html-loader"
-      }
-    ] // end rules Array
+        loader: 'html-loader',
+      },
+    ], // end rules Array
   }, // end module Object
   plugins: [
-    new ExtractTextPlugin("style.css"),
-    new HTMLWebpackPlugin({
-      title: "New Project",
-      template: "index.html"
+    new ExtractTextPlugin ('style.css'),
+    new HTMLWebpackPlugin ({
+      title: 'New Project',
+      template: 'index.html',
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new webpack.optimize.UglifyJsPlugin ({
       compressor: {
-        warnings: false
+        warnings: false,
       },
-      sourceMap: false
+      sourceMap: false,
     }),
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-      }
+    new webpack.DefinePlugin ({
+      'process.env': {
+        NODE_ENV: JSON.stringify (process.env.NODE_ENV),
+      },
     }),
   ],
   devServer: {
-    contentBase: path.join(__dirname, "public"),
+    contentBase: path.join (__dirname, 'public'),
     compress: true,
     port: 3000,
-    clientLogLevel: "none",
+    clientLogLevel: 'none',
     historyApiFallback: true,
     open: true,
     openPage: '', // Avoid /undefined bug
   },
-  devtool: process.env.NODE_ENV === "production" ?
-    undefined : "cheap-module-eval-source-map"
+  devtool: process.env.NODE_ENV === 'production'
+    ? undefined
+    : 'cheap-module-eval-source-map',
 };
-console.log(`!----YOU ARE IN ${process.env.NODE_ENV.toUpperCase()}----!`);
+console.log (`!----YOU ARE IN ${process.env.NODE_ENV.toUpperCase ()}----!`);
