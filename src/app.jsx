@@ -1,20 +1,20 @@
-//@flow
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
-import "./scss/style.scss";
+// @flow
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter as Router} from 'react-router-dom';
+import {Provider} from 'react-redux';
+import './scss/style.scss';
 
-import Routes from "./routes/routes";
-import { configure } from "./redux/store/configureStore";
+import Routes from './routes/routes';
+import configure from './redux/store/configureStore';
 
-const store = configure();
+const store = configure ();
 
-ReactDOM.render(
+ReactDOM.render (
   <Provider store={store}>
     <Router>
       <Routes />
     </Router>
   </Provider>,
-  document.getElementById("app")
+  document.getElementById ('app')
 );

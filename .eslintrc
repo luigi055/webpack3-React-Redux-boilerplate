@@ -1,13 +1,23 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
   "plugins": [
+    "prettier",
     "react",
     "jsx-a11y",
     "import",
     "flow"
   ],
-  "retainLines": true,
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module"
+  },
+  // "retainLines": true,
   "env": {
+    "es6": true,
     "browser": true,
     "node": true,
     "mocha": true

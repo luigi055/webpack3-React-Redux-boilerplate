@@ -1,15 +1,17 @@
 {
-  "name": "react-redux-webpack2-boilerplate",
+  "name": "react-redux-webpack3-boilerplate",
   "version": "1.0.0",
-  "description": "Webpack 2 Boilerplate for React + Redux",
+  "description": "Webpack 3 Boilerplate for React + Redux",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "./node_module/.bin/webpack && node server.js",
     "dev": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "prod": "export NODE_ENV=production || SET \"NODE_ENV=production\" && node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js -p",
     "build-dev": "rm -rf ./public && webpack",
     "build-dev--watch": "webpack -d -w",
     "build": "export NODE_ENV=production || SET \"NODE_ENV=production\" && rm -rf ./public && webpack -p",
+    "lint": "eslint **/*.{js, jsx} --quiet",
+    "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"src/**/*.{js, jsx}\"",
     "test": "mocha --compilers js:babel-core/register --require ./src/tests/testHelpers.js --recursive ./src/tests",
     "test-watch": "yarn run test -- --watch",
     "clear": "rm -rf ./public",
@@ -21,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/luigi055/webpack2-React-Redux-boilerplate.git"
+    "url": "https://github.com/luigi055/webpack3-React-Redux-boilerplate.git"
   },
   "keywords": [
     "react",
@@ -47,9 +49,14 @@
     "css-mqpacker": "6.0.1",
     "eslint": "4.3.0",
     "eslint-config-airbnb": "15.1.0",
+    "eslint-config-prettier": "^2.5.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-flow": "^2.29.1",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
-    "eslint-plugin-react": "7.1.0",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "7.3.0",
     "extract-text-webpack-plugin": "3.0.0",
     "file-loader": "0.11.2",
     "flow-bin": "0.54.1",
@@ -63,6 +70,7 @@
     "postcss-loader": "2.0.6",
     "postcss-vmin": "3.0.0",
     "postcss-will-change": "2.0.0",
+    "prettier": "^1.7.0",
     "react-addons-test-utils": "15.6.0",
     "resolve-url-loader": "^2.0.0",
     "sass-loader": "6.0.6",

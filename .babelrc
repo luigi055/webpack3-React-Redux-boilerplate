@@ -1,7 +1,17 @@
 {
- "presets": [
-   ["env", { "modules": false }],
-   "react",
-   "stage-0"
-   ]
+  "presets": [
+    "flow",
+    "react",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions"
+        },
+        "modules": false,
+        "loose": true
+      }
+    ],
+    "stage-0"
+  ]
 }

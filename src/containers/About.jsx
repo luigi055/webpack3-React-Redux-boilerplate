@@ -1,9 +1,11 @@
-//@flow
-import React from "react";
-import { connect } from "react-redux";
+// @flow
+import React from 'react';
+import {connect} from 'react-redux';
 
 const About = props => {
-  const { greet } = props;
+  /*eslint-disable */
+  const {greet} = props;
+  /* eslint-enable*/
   return (
     <div className="about">
       <h1 className="title-component">React Redux Webpack 3 Boilerplate</h1>
@@ -12,6 +14,6 @@ const About = props => {
   );
 };
 
-const mapStateToProps = state => ({ greet: state.greet });
+const mapStateToProps = state => ({greet: state.greet});
 
-export default connect(mapStateToProps)(About);
+export default connect (mapStateToProps) (About);

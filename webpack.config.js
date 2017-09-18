@@ -34,24 +34,40 @@ module.exports = {
         'src/redux/store/configureStore.js'
       ),
     },
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.json'],
+  },
+  stats: {
+    colors: true,
+    reasons: true,
+    chunks: true,
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.jsx?$/,
+        loader: 'eslint-loader',
+        exclude: /node_modules/,
+      },
       {
         test: /.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'babel-loader?cacheDirectory=true',
             options: {
               presets: [
                 [
                   'env',
                   {
+                    targets: {
+                      browsers: 'last 2 versions',
+                    },
                     modules: false,
+                    loose: true,
                   },
                 ],
+                'flow',
                 'stage-0',
                 'react',
               ],
