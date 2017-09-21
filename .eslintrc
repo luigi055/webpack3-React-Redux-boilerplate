@@ -11,9 +11,13 @@
     "import",
     "flow"
   ],
+  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaVersion": 2016,
-    "sourceType": "module"
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   // "retainLines": true,
   "env": {
