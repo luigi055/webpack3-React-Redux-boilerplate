@@ -1,6 +1,6 @@
 import {applyMiddleware, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
-import reducers from './../reducers/reducers';
+import reducers from './../reducers';
 
 const configure = (initialState = {}) => {
   const composeEnhancers =
@@ -12,6 +12,16 @@ const configure = (initialState = {}) => {
     initialState,
     composeEnhancers (applyMiddleware (thunk))
   );
+
+  if (module.hot) {
+    // Enable Webpack hot module replacement for reducers
+    module.hot.accept ('../reducers', () => {
+      /* eslint-disable*/
+      const nextRootReducer = require ('../reducers/index');
+      /* eslint-enable*/
+      store.replaceReducer (nextRootReducer);
+    });
+  }
 
   return store;
 };

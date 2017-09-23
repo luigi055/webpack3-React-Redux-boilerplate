@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {Provider} from 'react-redux';
 import './scss/style.scss';
@@ -10,11 +9,12 @@ import configure from './redux/store/configureStore';
 
 const store = configure ();
 
-ReactDOM.render (
+const App = () => (
   <Provider store={store}>
     <Router>
       <Routes />
     </Router>
-  </Provider>,
-  document.getElementById ('app')
+  </Provider>
 );
+
+export default App;

@@ -3,19 +3,25 @@ const webpack = require ('webpack');
 const ExtractTextPlugin = require ('extract-text-webpack-plugin');
 const HTMLWebpackPlugin = require ('html-webpack-plugin');
 
+const devPORT = 3000;
+const publicFile = 'public';
+
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 module.exports = {
   context: path.resolve (__dirname, 'src'),
   entry: [
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://localhost:${devPORT}`,
+    'webpack/hot/only-dev-server',
     'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
     'script-loader!popper.js/dist/umd/popper.min.js',
     'script-loader!bootstrap/dist/js/bootstrap.min.js',
-    './App.jsx',
+    './ClientApp.jsx',
   ],
   output: {
-    path: path.resolve (__dirname, 'public'),
+    path: path.resolve (__dirname, publicFile),
     filename: 'bundle.js',
   },
   resolve: {
@@ -152,6 +158,8 @@ module.exports = {
     ], // end rules Array
   }, // end module Object
   plugins: [
+    new webpack.HotModuleReplacementPlugin (),
+    new webpack.NamedModulesPlugin (), // which component is changing when hmr
     new ExtractTextPlugin ('style.css'),
     new HTMLWebpackPlugin ({
       title: 'New Project',
@@ -170,9 +178,10 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: path.join (__dirname, 'public'),
+    contentBase: path.join (__dirname, publicFile),
     compress: true,
-    port: 3000,
+    hot: true,
+    port: devPORT,
     clientLogLevel: 'none',
     historyApiFallback: true,
     open: true,
