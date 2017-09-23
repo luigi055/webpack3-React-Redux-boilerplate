@@ -27,6 +27,11 @@ const Header = () => (
             {' '}Features{' '}
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink to="/search" className="nav-link" activeClassName="active">
+            {' '}Search{' '}
+          </NavLink>
+        </li>
       </ul>
     </div>
   </nav>
