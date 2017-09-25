@@ -11,8 +11,8 @@ export default () => (
     <Header />
     <Switch>
       <Route exact path="/" component={About} />
-      <Route path="/features" component={Features} />
-      <Route path="/search" component={Search} />
+      <Route exact path="/features" component={Features} />
+      <Route exact path="/search" component={Search} />
       <Route render={() => <h1>Not Found :(</h1>} />
     </Switch>
   </div>

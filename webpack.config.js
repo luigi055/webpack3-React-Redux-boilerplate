@@ -7,13 +7,11 @@ const devPORT = 3000;
 const publicFile = 'public';
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV;
 
-module.exports = {
+const config = {
   context: path.resolve (__dirname, 'src'),
   entry: [
-    'react-hot-loader/patch',
-    `webpack-dev-server/client?http://localhost:${devPORT}`,
-    'webpack/hot/only-dev-server',
     'babel-polyfill',
     'script-loader!jquery/dist/jquery.min.js',
     'script-loader!popper.js/dist/umd/popper.min.js',
@@ -158,14 +156,17 @@ module.exports = {
     ], // end rules Array
   }, // end module Object
   plugins: [
-    new webpack.HotModuleReplacementPlugin (),
-    new webpack.NamedModulesPlugin (), // which component is changing when hmr
     new ExtractTextPlugin ('style.css'),
     new HTMLWebpackPlugin ({
       title: 'New Project',
+      filename: 'index.html',
       template: 'index.html',
     }),
     new webpack.optimize.UglifyJsPlugin ({
+      parallel: {
+        cache: true,
+        workers: 2,
+      },
       compressor: {
         warnings: false,
       },
@@ -191,4 +192,19 @@ module.exports = {
     ? undefined
     : 'cheap-module-eval-source-map',
 };
+
+// Activating hot module replacement in development
+if (env === 'development') {
+  config.entry.unshift (
+    'react-hot-loader/patch',
+    `webpack-dev-server/client?http://localhost:${devPORT}`,
+    'webpack/hot/only-dev-server'
+  );
+  config.plugins.unshift (
+    new webpack.HotModuleReplacementPlugin (),
+    new webpack.NamedModulesPlugin ()
+  );
+}
+
+module.exports = config;
 console.log (`!----YOU ARE IN ${process.env.NODE_ENV.toUpperCase ()}----!`);

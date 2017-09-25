@@ -5,7 +5,10 @@ import reducers from './../reducers';
 const configure = (initialState = {}) => {
   const composeEnhancers =
     /*eslint-disable */
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    // Deactivate redux devtools if production
+    (process.env.NODE_ENV === 'development' &&
+      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+    compose;
   /*eslint-enable */
   const store = createStore (
     reducers,
