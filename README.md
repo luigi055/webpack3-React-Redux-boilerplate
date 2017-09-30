@@ -1,4 +1,5 @@
 # Webpack3 React Redux boilerplate
+# THIS BOILERPLATE WILL NOT BE MAINTAIN ANY MORE. THIS WAS REPLACE BY THIS NEW BOILERPLATE VISIT https://github.com/luigi055/React-Redux-Boilerplate/tree/develop#os-compatibility
 
 ## Table of contents
 * [About](#user-content-what-is-this)
@@ -8,9 +9,6 @@
 * [Generate Build on Development](#user-content-build-on-development)
 * [Generate Build on Production](#user-content-build-on-production)
 * [Test](#user-content-running-in-dev-mode)
-
-
-
 
 ## About?
 
